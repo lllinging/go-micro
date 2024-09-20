@@ -170,7 +170,7 @@ func (app *Config) sendMail(w http.ResponseWriter, msg MailPayload) {
 	mailServiceURL := "http://mailer-service/send"
 
 	//post to mail service
-	request, err := http.NewRequest("POST",mailServiceURL, bytes.NewBuffer(jsonData))
+	request, err := http.NewRequest("POST", mailServiceURL, bytes.NewBuffer(jsonData))
 	if err != nil {
 		app.errorJSON(w, err)
 		return
@@ -252,7 +252,7 @@ func (app *Config) logItemViaRPC(w http.ResponseWriter, l LogPayload) {
 	}
 
 	var result string
-	err = client.Call("RPCServer.LogInfo", rpcPayload, &result)	
+	err = client.Call("RPCServer.LogInfo", rpcPayload, &result)
 	if err != nil {
 		app.errorJSON(w, err)
 		return

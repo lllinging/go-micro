@@ -4,12 +4,12 @@
 This project aims to illustrate the advantages of microservices architecture by developing a collection of small, self-contained services that are loosely coupled and can be independently developed, deployed, and scaled. By leveraging Go, I created a dynamic architecture that facilitates rapid and reliable delivery of complex applications. The project encompasses several essential microservices that enhance functionality and user experience.
 
 ## Features
-**Authentication Service:** A dedicated service for user authentication, utilizing a Postgres database for secure user data management.
-**Logging Service**: Collects and stores logs using MongoDB, enabling efficient data retrieval and analysis.
-**Message Listener:** Receives messages from RabbitMQ, facilitating inter-service communication and event handling.
-**Broker Service:** Serves as an optional single entry point into the microservice cluster, streamlining requests to various services.
-**Mail Service:** Processes JSON payloads to generate and send formatted emails, enhancing user interaction.
-**Dynamic Communication:** Integrates various communication methods, including REST API, RPC, gRPC, and AMQP, to enable seamless service interactions.
+**Authentication Service:** A dedicated service for user authentication, utilizing a Postgres database for secure user data management.  
+**Logging Service**: Collects and stores logs using MongoDB, enabling efficient data retrieval and analysis.  
+**Message Listener:** Receives messages from RabbitMQ, facilitating inter-service communication and event handling.  
+**Broker Service:** Serves as an optional single entry point into the microservice cluster, streamlining requests to various services.  
+**Mail Service:** Processes JSON payloads to generate and send formatted emails, enhancing user interaction.  
+**Dynamic Communication:** Integrates various communication methods, including REST API, RPC, gRPC, and AMQP, to enable seamless service interactions.  
 
 ## Technologies Used
 **Programming Language:** Go (Golang)

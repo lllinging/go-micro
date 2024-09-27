@@ -9,18 +9,17 @@ import (
 	"os"
 	"time"
 
-	_"github.com/jackc/pgconn"//import the pgx driver
-	_"github.com/jackc/pgx/v4"//import the pgx driver
-	_"github.com/jackc/pgx/v4/stdlib"//import the pgx driver
+	_ "github.com/jackc/pgconn"        //import the pgx driver
+	_ "github.com/jackc/pgx/v4"        //import the pgx driver
+	_ "github.com/jackc/pgx/v4/stdlib" //import the pgx driver
 )
-
 
 const webPort = "80"
 
 var counts int64
 
 type Config struct {
-	DB *sql.DB
+	DB     *sql.DB
 	Models data.Models
 }
 
@@ -35,12 +34,12 @@ func main() {
 
 	//set up cofig
 	app := Config{
-		DB: conn,
+		DB:     conn,
 		Models: data.New(conn),
 	}
 
 	srv := &http.Server{
-		Addr: fmt.Sprintf(":%s", webPort),
+		Addr:    fmt.Sprintf(":%s", webPort),
 		Handler: app.routes(),
 	}
 
@@ -48,7 +47,6 @@ func main() {
 	if err != nil {
 		log.Panic(err)
 	}
-
 
 }
 
@@ -63,16 +61,16 @@ func openDB(dsn string) (*sql.DB, error) {
 	}
 
 	return db, nil
-}	
+}
 
-func connectToDB() (*sql.DB) {
+func connectToDB() *sql.DB {
 	dsn := os.Getenv("DSN")
 
 	for {
 		connection, err := openDB(dsn)
 		if err != nil {
 			log.Println("Postgres not yet ready:", err)
-			counts++;
+			counts++
 		} else {
 			log.Println("Connected to Postgres")
 			return connection
@@ -85,6 +83,6 @@ func connectToDB() (*sql.DB) {
 
 		log.Println("Backing off for two seconds")
 		time.Sleep(2 * time.Second)
-		continue;
+		continue
 	}
 }

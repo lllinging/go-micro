@@ -1,1 +1,7 @@
-./project/db-data
+project/db-data/
+project/caddy_config/
+authentication-service/authApp
+broker-service/brokerApp
+mail-service/mailerApp
+listener-service/listenerApp
+logger-service/loggerServiceApp

@@ -44,9 +44,13 @@
         let sent = document.getElementById('payload');
         let received = document.getElementById('received');
         let mailBtn = document.getElementById('mailBtn');
-        let brokerURL = "http://backend";//{{.BrokerURL}};
+        let brokerURL = "{{.BrokerURL}}" || "http://localhost:8080"; 
+    
 
         mailBtn.addEventListener('click', function () {
+        {{/* console.log("broker.....", `${brokerURL}`);
+        console.log("broker:::", brokerURL/handle);
+        console.log("broker:::", `${brokerURL}/log-grpc`); */}}
             const payload = {
                 action: "mail",
                 mail: {
@@ -66,7 +70,7 @@
                 headers: headers,
             };
 
-            fetch({{print .BrokerURL "/handle"}}, body)
+            fetch(`${brokerURL}/handle`, body)
                 .then(response => response.json())
                 .then(data => {
                     sent.innerHTML = JSON.stringify(payload, undefined, 4);
@@ -100,7 +104,7 @@
                 headers: headers,
             };
 
-            fetch({{print .BrokerURL "/log-grpc"}}, body)
+            fetch(`${brokerURL}/log-grpc`, body)
                 .then(response => response.json())
                 .then(data => {
                     sent.innerHTML = JSON.stringify(payload, undefined, 4);
@@ -134,7 +138,7 @@
                 headers: headers,
             };
 
-            fetch({{print .BrokerURL "/handle"}}, body)
+            fetch(`${brokerURL}/handle`, body)
                 .then(response => response.json())
                 .then(data => {
                     sent.innerHTML = JSON.stringify(payload, undefined, 4);
@@ -168,7 +172,7 @@
                 headers: headers,
             };
 
-            fetch({{print .BrokerURL "/handle"}}, body)
+            fetch(`${brokerURL}/handle`, body)
                 .then(response => response.json())
                 .then(data => {
                     {{/* output.innerHTML = JSON.stringify(data, null, 2); */}}
@@ -189,15 +193,12 @@
 
 
         brokerBtn.addEventListener('click', function () {
-            console.log("brokerURL", {{.BrokerURL}});
-            console.log(brokerURL);
-            console.log("broker service clicked");
             const body = {
                 method: 'post',
             };
         
 
-            fetch(brokerURL, body)
+            fetch(`${brokerURL}`, body)
                 .then(response => response.json())
                 .then(data => {
                     {{/* output.innerHTML = JSON.stringify(data, null, 2); */}}
